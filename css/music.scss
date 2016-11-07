@@ -46,10 +46,8 @@ img {
     }
 }
 .lis1 {
-    animation: lisd .2s linner ;
+    opacity: 1;
 }
-.lis2 {}
-.lis3 {}
 #box {
     @include center;
     width: 100%;

@@ -60,6 +60,20 @@ var c=0;
 		})
 	}
 	render()
+	//、、、、、、、、、、、、、、、、、、、、、
+	//列表双击事件  双击开始播放当前歌曲以及一系列的页面效果
+	console.log()
+    $(".mid1").on("dbclick",".list",function(){
+//      clearInterval(t)
+        index=$(this).index()
+ 	console.log(0)
+        audio.src=data[index].src;
+
+//      t=setInterval(move,5000)
+        // $(".lyric").addClass("active") //歌词移动调试
+        audio.play()
+
+    })
 		//	................
 		//下一首
 
@@ -150,7 +164,7 @@ var c=0;
 			if((ow - px - w) > progress.width()) {
 				return
 			}
-			audio.currentTime = audio.duration * ((ow - px - w) / progress.width())
+			audio.currentTime = audio.duration * ((ow - px - w-pi.width()) / progress.width())
 			$(document).on("mouseup", function() {
 				$(document).off("mousemove")
 				$(document).off("mouseup")
@@ -175,6 +189,7 @@ var c=0;
 		})
 		//	播放函数
 	$(audio).on("play", function() {
+		var t = setInterval(move, 5000);
 		$(".mid").find("h1").css("color","#fff").eq(index).css("color","orange")
 		$(".mid").find("p").css("color","#E7E6EA").eq(index).css("color","orange")
 		})
@@ -187,7 +202,7 @@ var c=0;
 		})
 		//	暂停函数
 	$(audio).on("pause", function() {
-
+ 			 clearInterval(t)
 		})
 		////	结束函数
 	$(audio).on("ended", function() {
@@ -201,8 +216,7 @@ var c=0;
 	var next = 0;
 	var flag = true;
 	var width = $(".datu").width();
-	var t = setInterval(move, 5000);
-
+	
 	function move() {
 		next = n + 1;
 		if(!flag) {

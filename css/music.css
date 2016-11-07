@@ -27,7 +27,7 @@ img {
   100% {
     opacity: 1; } }
 .lis1 {
-  animation: lisd 0.2s linner; }
+  opacity: 1; }
 
 #box {
   position: absolute;
