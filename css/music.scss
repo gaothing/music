@@ -21,14 +21,11 @@ img {
     display: block; //  width: 100%;
     height: 100%;
 }
-//.bei{
-//  @include center;
-//}
+
 .bei {
     vertical-align: middle;
     width: 100%;
-    height: 100%;
-    
+    height: 100%;  
 }
 .lis {
     position: fixed;
@@ -90,15 +87,14 @@ img {
             }
         }
         .singer {
-            position: absolute;
-            top: 1.5rem;
-            left: 0;
+            @include center;
+            
             height: 100%;
-//          margin-top: 0.5rem;
+            margin-top: 0.5rem;
             line-height: 0.8rem;
             text-align: center;
             top: 0.4rem;
-            font-size: 0.38rem;
+            font-size: 0.28rem;
             color: #fff;
             font-family: "microsoft yahei";
             font-weight: normal;
@@ -136,6 +132,14 @@ img {
         width: 100%;
         height: 6.4rem; //      border: 1px solid red;
         overflow: hidden;
+        p{
+            text-align: center;
+            color: #fff;
+            
+        }
+        .active{
+           color: red;
+        }
     }
     .list {
         width: 80%;
@@ -154,6 +158,13 @@ img {
             font-size: 0.24rem;
             padding: 0.06rem 0.4rem;
             font-weight: normal;
+            b{
+                float: right;
+                 color: #fff;
+                font-family: "iconfont" !important;
+                font-size: 0.3rem;
+                font-weight: normal;
+            }
         }
     }
 }
@@ -239,7 +250,7 @@ img {
 .progress {
     position: fixed;
     left: 0;
-    bottom: 4rem;
+    bottom: 2rem;
     height: 0.64rem;
     opacity: 1;
     width: 100%; //  border: 1px solid red;

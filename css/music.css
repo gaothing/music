@@ -79,13 +79,17 @@ img {
         font-weight: normal; }
     #box .header .singer {
       position: absolute;
-      top: 1.5rem;
       left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
       height: 100%;
+      margin-top: 0.5rem;
       line-height: 0.8rem;
       text-align: center;
       top: 0.4rem;
-      font-size: 0.38rem;
+      font-size: 0.28rem;
       color: #fff;
       font-family: "microsoft yahei";
       font-weight: normal; }
@@ -122,6 +126,11 @@ img {
     width: 100%;
     height: 6.4rem;
     overflow: hidden; }
+    .mid .lyric p {
+      text-align: center;
+      color: #fff; }
+    .mid .lyric .active {
+      color: red; }
   .mid .list {
     width: 80%;
     height: 1.24rem;
@@ -138,6 +147,12 @@ img {
       font-size: 0.24rem;
       padding: 0.06rem 0.4rem;
       font-weight: normal; }
+      .mid .list p b {
+        float: right;
+        color: #fff;
+        font-family: "iconfont" !important;
+        font-size: 0.3rem;
+        font-weight: normal; }
 
 .mid1 {
   left: -100%;
@@ -203,7 +218,7 @@ img {
 .progress {
   position: fixed;
   left: 0;
-  bottom: 4rem;
+  bottom: 2rem;
   height: 0.64rem;
   opacity: 1;
   width: 100%; }
