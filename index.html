@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="complete">
+		<title>音乐APP</title>
+		<!--ios-->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="css3">
+		<link rel="apple-touch-icon" href="loge.png" />
+		<!--android-->
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="application-name" content="black">
+		<meta name="theme-color" content="#97785C">
+		<link rel="icon" sizes="192*192" href="loge.png" />
+		<!--...................-->
+		<link rel="stylesheet" href="css/work.css" />
+		<link rel="stylesheet" href="css/music.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/music.js"></script>
+	</head>
+	<style>
+		@font-face {
+			font-family: "iconfont";
+			src: url('iconfont.eot?t=1478228602743');
+			/* IE9*/
+			src: url('iconfont.eot?t=1478228602743#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('iconfont.woff?t=1478228602743') format('woff'), /* chrome, firefox */
+			url('iconfont.ttf?t=1478228602743') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+			url('iconfont.svg?t=1478228602743#iconfont') format('svg');
+			/* iOS 4.1- */
+		}
+		
+		a {
+			font-family: "iconfont", "microsoft yahei"!important;
+			font-style: normal;
+			text-decoration: none;
+		}
+	</style>
+
+	<body>
+	
+		<img class="bei" src="img/jing.png" alt="" />
+		<img src="img/new1.png" alt="" class="lis lis1" />
+		<img src="img/new2.png" alt="" class="lis lis2" />
+		<img src="img/new3.png" alt="" class="lis lis3" />
+		<!--header-->
+		<div id="box">
+			<div class="header">
+				<div class="back">
+					<a href="">&#xe604;</a>
+				</div>
+				<h1 class="song-name">
+				<span>北斗星的爱</span>
+			</h1>
+				<!--<h2 class="singer">张杰</h2>-->
+				<div class="style">
+					<a href="">&#xe61f;</a>
+				</div>
+			</div>
+			<div class="three-cir">
+				<ul class="flo">
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<!--lyric-->
+		<div class="mid mid4">
+			<div class="lyric"></div>
+			<!--下载你收藏mylike-->
+			<ul class="mylike">
+				<li class="collect">&#xe610;</li>
+				<li class="load">&#xe890;</li>
+				<li class="save">&#xe605;</li>
+				<li class="other">&#xe7fe;</li>
+			</ul>
+ 
+		</div>
+		<ul class="mid mid1">
+			<!--<li class="list">
+				<h1>北斗星的爱</h1>
+				<p>张杰</p>
+			</li>
+			<li class="list">
+				<h1>北斗星的爱</h1>
+				<p>张杰</p>
+			</li>
+			<li class="list">
+				<h1>北斗星的爱</h1>
+				<p>张杰</p>
+			</li>
+			<li class="list">
+				<h1>北斗星的爱</h1>
+				<p>张杰</p>
+			</li>-->
+		</ul>
+		<!--progress-->
+		<ul class="progress">
+			<li class="go">0:07</li>
+			<li class="pro">
+				<div class="jin"></div>
+				<div class="pi"></div>
+			</li>
+			<li class="durition">3:09</li>
+		</ul>
+		<!--切换，暂停footer-->
+		<div class="footer">
+			<ul class="improt">
+				<li class="mode">&#xe6f1;</li>
+				<li class="cir-left">&#xe68d;</li>
+				<li class="play">&#xe640;</li>
+				<li class="mune">&#xe648;</li>
+				<li class="cir-right">&#xe68c;</li>
+			</ul>
+		</div>
+			<audio id="audio"  src="music/天空之城.mp3"  ></audio>
+	</body>
+
+</html>
