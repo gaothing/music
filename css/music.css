@@ -112,7 +112,7 @@ img {
         margin-left: 0.1rem; }
 
 .mid {
-  position: absolute;
+  position: fixed;
   top: 2.8rem;
   width: 80%;
   height: 7.3rem;
@@ -169,11 +169,11 @@ img {
     width: 100%; } }
 @keyframes list2 {
   from {
-    left: 100%;
-    width: 0; }
-  to {
     left: 0;
-    width: 100%; } }
+    width: 100%; }
+  to {
+    left: 100%;
+    width: 0; } }
 @keyframes list3 {
   from {
     left: 0;
@@ -201,7 +201,7 @@ img {
     font-family: "iconfont", "microsoft yahei" !important; }
 
 .progress {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 4rem;
   height: 0.64rem;
