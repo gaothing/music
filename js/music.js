@@ -505,6 +505,7 @@ $(function() {
 				if(format(audio.currentTime) == v.time) {
 					$(".lyric p").css("color", "#fff")
 					$(".lyric p").eq(i).css("color", "orange")
+					
 					$(".lyric p").eq(i - 3).css("display", "none")
 
 				}
@@ -521,13 +522,13 @@ $(function() {
 		var w = e.offsetX
 			// console.log(w)
 			// console.log(px)
-		$(document).on("mousemove", function(e) {
+		$(document).on("touchmove", function(e) {
 			var ow = e.clientX;
 
 			audio.currentTime = audio.duration * ((ow - px - w) / progress.width())
-			$(document).on("mouseup", function() {
-				$(document).off("mousemove")
-				$(document).off("mouseup")
+			$(document).on("touchup", function() {
+				$(document).off("touchmove")
+				$(document).off("touchup").touch
 			})
 		})
 
@@ -571,6 +572,8 @@ $(data[index].lyrics).each(function(i, v) {
 				if(format(audio.currentTime) == v.time) {
 					$(".lyric p").css("color", "#fff")
 					$(".lyric p").eq(i).css("color", "orange")
+					var oo=i-3;
+					
 					$(".lyric p").eq(i - 3).css("display", "none")
 
 				}
