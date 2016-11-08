@@ -525,18 +525,21 @@ $(function() {
 		audio.currentTime = audio.duration * (e.offsetX / $(this).width())
 		audio.play()
 	})
-	pi.on("mousedown", function(e) {
+	$(document).on("touchmove",false)
+	pi.on("touchstart", function(e) {
 		var px = $(this).offsetParent().offset().left
 		var w = e.offsetX
 			// console.log(w)
 			// console.log(px)
 		$(document).on("touchmove", function(e) {
 			var ow = e.clientX;
-
+ if( (ow-px-w) >$(".time-right").width() ){
+                return
+            }
 			audio.currentTime = audio.duration * ((ow - px - w) / progress.width())
-			$(document).on("touchup", function() {
+			$(document).on("touchend", function() {
 				$(document).off("touchmove")
-				$(document).off("touchup").touch
+				$(document).off("touchend").touch
 			})
 		})
 
