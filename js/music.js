@@ -505,8 +505,16 @@ $(function() {
 				if(format(audio.currentTime) == v.time) {
 					$(".lyric p").css("color", "#fff")
 					$(".lyric p").eq(i).css("color", "orange")
+				
+					for(var h=0;h<=data[index].lyrics.length;h++){
+						var h;
+						h++
+					if(h<i-3){
+						$(".lyric p").eq(h).css("display", "none")
+					}	
+					}
 					
-					$(".lyric p").eq(i - 3).css("display", "none")
+					
 
 				}
 			})
