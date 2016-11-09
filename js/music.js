@@ -526,28 +526,34 @@ $(function() {
 		audio.play()
 	})
 	console.log(pi)
-	$(document).on("touchmove", false)
+	pi.on("touchstart",false)
 	pi.on("touchstart", function(e) {
 		console.log(6)
-		var px = $(this).offsetParent().offset().left
-		var w = e.offsetX
+		e.preventDefault();
+		var of=e.originalEvent.changedTouches[0].clientX-pi.offset().left
+		var start=pi.width()/2
+	console.log(start)
+		var w = start-of
 		console.log(w)
-			// console.log(w)
-			// console.log(px)
 		$(document).on("touchmove", function(e) {
-			var ow = e.clientX;
- if( (ow-px-w) >$(".time-right").width() ){
-                return
-            }
-			audio.currentTime = audio.duration * ((ow - px - w) / progress.width())
-			$(document).on("touchend", function() {
+			var ow =e.originalEvent.changedTouches[0].clientX-pro.offset().left+w
+		
+console.log(ow)
+console.log(pro.width())
+console.log(  ow  / pro.width()*audio.duration  )
+		var x = ow  / pro.width()*audio.duration
+console.log(x)
+		
+		audio.currentTime=x;
+console.log(audio.currentTime)
+			
+		})
+return false
+	})
+$(document).on("touchend", function() {
 				$(document).off("touchmove")
 				$(document).off("touchend").touch
 			})
-		})
-
-	})
-
 	//	.................
 	//	开始下载
 	$(audio).on("loadstart", function() {
