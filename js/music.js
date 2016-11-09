@@ -525,10 +525,13 @@ $(function() {
 		audio.currentTime = audio.duration * (e.offsetX / $(this).width())
 		audio.play()
 	})
-	$(document).on("touchmove",false)
+	console.log(pi)
+	$(document).on("touchmove", false)
 	pi.on("touchstart", function(e) {
+		console.log(6)
 		var px = $(this).offsetParent().offset().left
 		var w = e.offsetX
+		console.log(w)
 			// console.log(w)
 			// console.log(px)
 		$(document).on("touchmove", function(e) {
