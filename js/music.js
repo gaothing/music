@@ -505,16 +505,12 @@ $(function() {
 				if(format(audio.currentTime) == v.time) {
 					$(".lyric p").css("color", "#fff")
 					$(".lyric p").eq(i).css("color", "orange")
-				
-					for(var h=0;h<=data[index].lyrics.length;h++){
-						var h;
-						h++
-					if(h<i-3){
-						$(".lyric p").eq(h).css("display", "none")
-					}	
+
+					for(var h = 0; h <= data[index].lyrics.length; h++) {
+						if(h < i - 3) {
+							$(".lyric p").eq(h).css("display", "none")
+						}
 					}
-					
-					
 
 				}
 			})
@@ -526,42 +522,42 @@ $(function() {
 		audio.play()
 	})
 	console.log(pi)
-	pi.on("touchstart",false)
+	pi.on("touchstart", false)
 	pi.on("touchstart", function(e) {
 		console.log(6)
 		e.preventDefault();
-		var of=e.originalEvent.changedTouches[0].clientX-pi.offset().left
-		var start=pi.width()/2
-	console.log(start)
-		var w = start-of
+		var of = e.originalEvent.changedTouches[0].clientX - pi.offset().left
+		var start = pi.width() / 2
+		console.log(start)
+		var w = start - of
 		console.log(w)
 		$(document).on("touchmove", function(e) {
-			var ow =e.originalEvent.changedTouches[0].clientX-pro.offset().left+w
-		
-console.log(ow)
-console.log(pro.width())
-console.log(  ow  / pro.width()*audio.duration  )
-		var x = ow  / pro.width()*audio.duration
-console.log(x)
-		
-		audio.currentTime=x;
-console.log(audio.currentTime)
-			
+			var ow = e.originalEvent.changedTouches[0].clientX - pro.offset().left + w
+
+			console.log(ow)
+			console.log(pro.width())
+			console.log(ow / pro.width() * audio.duration)
+			var x = ow / pro.width() * audio.duration
+			console.log(x)
+
+			audio.currentTime = x;
+			console.log(audio.currentTime)
+
 		})
-return false
+		return false
 	})
-$(document).on("touchend", function() {
-				$(document).off("touchmove")
-				$(document).off("touchend").touch
-			})
-	//	.................
-	//	开始下载
+	$(document).on("touchend", function() {
+			$(document).off("touchmove")
+			$(document).off("touchend").touch
+		})
+		//	.................
+		//	开始下载
 	$(audio).on("loadstart", function() {
 
 	})
 
 	$(audio).on("progress", function() {
-		$(data[index].lyrics).each(function(i, v) {
+			$(data[index].lyrics).each(function(i, v) {
 				if(format(audio.currentTime) == v.time) {
 					$(".lyric p").css("color", "#fff")
 					$(".lyric p").eq(i).css("color", "orange")
@@ -569,7 +565,7 @@ $(document).on("touchend", function() {
 
 				}
 			})
-	})
+		})
 		//	缓存结束，可以播放
 	$(audio).on("canplay", function() {
 
@@ -588,19 +584,19 @@ $(document).on("touchend", function() {
 		})
 		//	事件改变函数
 	$(audio).on("timeupdate", function() {
-$(data[index].lyrics).each(function(i, v) {
-				if(format(audio.currentTime) == v.time) {
-					$(".lyric p").css("color", "#fff")
-					$(".lyric p").eq(i).css("color", "orange")
-					var oo=i-3;
-					
-					$(".lyric p").eq(i - 3).css("display", "none")
+		$(data[index].lyrics).each(function(i, v) {
+			if(format(audio.currentTime) == v.time) {
+				$(".lyric p").css("color", "#fff")
+				$(".lyric p").eq(i).css("color", "orange")
+				var oo = i - 3;
 
-				}
-			})
+				$(".lyric p").eq(i - 3).css("display", "none")
+
+			}
+		})
 	})
 	$(audio).on("seek", function() {
-$(data[index].lyrics).each(function(i, v) {
+			$(data[index].lyrics).each(function(i, v) {
 				if(format(audio.currentTime) == v.time) {
 					$(".lyric p").css("color", "#fff")
 					$(".lyric p").eq(i).css("color", "orange")
