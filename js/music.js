@@ -380,75 +380,56 @@ $(function() {
 	}, ]
 	var list = $(".mune")
 		//  ........................
-	function render() {
-		list.on("click", function() {
+
+		list.on("touchend", function() {
 			$(".mid1").empty();
 			$(".progress").toggleClass("jingdu");
 			$(".mid1").toggleClass("mid6").toggleClass("mid2")
 			$(".mid4").toggleClass("mid5").toggleClass("mid3")
 			$(data).each(function(i, v) {
 				$('<li class="list"><h1>' + v.song + '</h1><p>' + v.name + '<b>&#xe60e;</b></p></li>').appendTo($(".mid1"))
-				index = $(this).index();
-				//			................
+//				index = $(this).index();
+				$(".mid1").find("h1").css("color", "#fff").eq(index).css("color", "orange")
+			$(".mid1").find("p").css("color", "#E7E6EA").eq(index).css("color", "orange")
 			})
 		})
-	}
-	render()
 		//、、、、、、、、、、、、、、、、、、、、、
 		//列表双击事件  双击开始播放当前歌曲
-	$(".mid1").on("click", "li", function() {
-			
+	$(".mid1").on("touchend", "li", function() {
 			index = $(this).index()
-			console.log(index)
 			audio.src = data[index].src;
 			$(".mid4 .lyric").empty()
 			$(data[index].lyrics).each(function(i, v) {
-					$("<p class=" + i + ">" + v.lyric + "</p>").appendTo($(".mid4 .lyric"))
+				$("<p class=" + i + ">" + v.lyric + "</p>").appendTo($(".mid4 .lyric"))
 			})
 			audio.play()
-
 		})
 		//删除单首歌曲
-	$(".mid1").on("click", "b", function() {
+	$(".mid1").on("touchend", "b", function() {
 			var lin = $(this).closest("li").index()
-				//  	var dele=[]
-				//  	  $(data).each(function(i,v){
-				//  	  	if(!i==lin){
-				//  	  		dele.push(data[i])
-				//  	  	}
-				//  		 data=dele
-				//  	  })
-
 			$(this).closest("li").remove()
 		})
 		//	................
 		//下一首
-
-	$(".cir-right").on("click", function() {
+	$(".cir-right").on("touchend", function() {
 		index += 1;
 		if(index >= data.length) {
 			index = 0;
 		}
-		console.log(index)
 		audio.src = data[index].src;
 		$(".mid4 .lyric").empty()
 		$(data[index].lyrics).each(function(i, v) {
 			$("<p class=" + i + ">" + v.lyric + "</p>").appendTo($(".mid4 .lyric"))
 		})
 		audio.play();
-
 		index = index;
 	})
-
 	//上一首
-
-	$(".cir-left").on("click", function() {
+	$(".cir-left").on("touchend", function() {
 			index -= 1;
-
 			if(index < 0) {
 				index = data.length - 1;
 			}
-			console.log(index)
 			audio.src = data[index].src;
 			$(".mid4 .lyric").empty()
 			$(data[index].lyrics).each(function(i, v) {
@@ -465,23 +446,22 @@ $(function() {
 
 	//	/ >>>>>>>>>>>>>>>点击播放暂停>>>>>>>>>>>>>>>>>>>>>>>
 	var t;
-	stop.on("click", function() {
-		console.log(1)
+	stop.on("touchend", function() {
 		if(audio.paused) {
 			audio.play()
-			 t = setInterval(move, 5000);
+			t = setInterval(move, 5000);
 		} else {
 			audio.pause()
 			clearInterval(t)
 		}
 	})
 	$(audio).on("play", function() {
-		stop.html("&#xe638;")
+		stop.html("&#xe640;")
 	})
 	$(audio).on("pause", function() {
-			stop.html("&#xe640;")
+			stop.html("&#xe638;")
 		})
-		//	>>>>>>>>>>>>>>>>>>音量点击\拖拽>>>>>>>>>>>>>>>>>>>
+	//	>>>>>>>>>>>>>>>>>>音量点击\拖拽>>>>>>>>>>>>>>>>>>>
 	var progress = $(".progress");
 	var go = $(".go");
 	var pro = $(".pro");
@@ -502,54 +482,38 @@ $(function() {
 			var left = pro.width() * (audio.currentTime / audio.duration) - 10
 			pro.find(".pi").css("left", left)
 			$(".jin").css("width", left)
-//			
+				//			
 		})
-		///////////////////////////进度条点击和动//////////////////////////////////
-	pro.on("click", false)
-	pro.on("click", function(e) {
-		audio.currentTime = audio.duration * (e.offsetX / $(this).width())
+	///////////////////////////进度条点击和动//////////////////////////////////
+	pro.on("touchend", false)
+	pro.on("touchend", function(e) {
+		audio.currentTime = audio.duration * (e.originalEvent.changedTouches[0].clientX-pro.offset().left )/ $(this).width()
 		audio.play()
 	})
-	console.log(pi)
-	pi.on("touchstart",false)
+	pi.on("touchstart", false)
 	pi.on("touchstart", function(e) {
-		console.log(6)
 		e.preventDefault();
-		var of=e.originalEvent.changedTouches[0].clientX-pi.offset().left
-		var start=pi.width()/2
-	console.log(start)
-		var w = start-of
-		console.log(w)
+		var of = e.originalEvent.changedTouches[0].clientX - pi.offset().left
+		var start = pi.width() / 2
+		var w = start - of
 		$(document).on("touchmove", function(e) {
-			var ow =e.originalEvent.changedTouches[0].clientX-pro.offset().left+w
-		
-console.log(ow)
-console.log(pro.width())
-console.log(  ow  / pro.width()*audio.duration  )
-		var x = ow  / pro.width()*audio.duration
-console.log(x)
-		
-		audio.currentTime=x;
-console.log(audio.currentTime)
-			
+			var ow = e.originalEvent.changedTouches[0].clientX - pro.offset().left + w
+			var x = ow / pro.width() * audio.duration
+			audio.currentTime = x;
 		})
-return false
+		return false
 	})
-$(document).on("touchend", function() {
-				$(document).off("touchmove")
-				$(document).off("touchend").touch
-			})
-	//	.................
-	//	开始下载
+	$(document).on("touchend", function() {
+			$(document).off("touchmove")
+			$(document).off("touchend")
+		})
+		//	.................
+		//	开始下载
 	$(audio).on("loadstart", function() {
-
 	})
-
-	$(audio).on("progress", function() {
-	})
+	$(audio).on("progress", function() {})
 		//	缓存结束，可以播放
 	$(audio).on("canplay", function() {
-
 			$(".mid4 .lyric").empty()
 			$(data[index].lyrics).each(function(i, v) {
 				$("<p >" + v.lyric + "</p>").appendTo($(".mid4 .lyric"))
@@ -559,29 +523,22 @@ $(document).on("touchend", function() {
 		})
 		//	播放函数
 	$(audio).on("play", function() {
-			
 			$(".mid1").find("h1").css("color", "#fff").eq(index).css("color", "orange")
 			$(".mid1").find("p").css("color", "#E7E6EA").eq(index).css("color", "orange")
 		})
 		//	事件改变函数
 	$(audio).on("timeupdate", function() {
-	$(data[index].lyrics).each(function(i, v) {
-				if(format(audio.currentTime) == v.time) {
-					$(".lyric p").css("color", "#fff")
-					$(".lyric p").eq(i).css("color", "orange")
-				
-					for(var h=0;h<=data[index].lyrics.length;h++){
-						
-						
-					if(h<i-3){
+		$(data[index].lyrics).each(function(i, v) {
+			if(format(audio.currentTime) == v.time) {
+				$(".lyric p").css("color", "#fff")
+				$(".lyric p").eq(i).css("color", "orange")
+				for(var h = 0; h <= data[index].lyrics.length; h++) {
+					if(h < i - 3) {
 						$(".lyric p").eq(h).css("display", "none")
-					}	
 					}
-					
-					
-
 				}
-			})
+			}
+		})
 	})
 	$(audio).on("seek", function() {
 
@@ -624,24 +581,4 @@ $(document).on("touchend", function() {
 
 		n = next
 	}
-	//	>..........左右滑动...........
-	//	var first_ob;
-	////	$(document).on('touchstart', false);
-	//	$(document).on("touchstart", function(e) {
-	//		first_ob = e.originalEvent.changedTouches[0].clientX;
-	//		console.log(first_ob)
-	//	})
-	////	$(document).on('touchend', false);
-	//	$(document).on("touchend", function(e) {
-	//		var last_ob = e.originalEvent.changedTouches[0].clientX;
-	//		if(last_ob - first_ob > 50) {
-	//			$(".mid1").romoveClass("mid6").addClass("mid2")
-	//			$(".mid4").romoveClass("mid5").addClass("mid3")
-	//		}
-	//		if(last_ob - first_ob < -50) {
-	//			$(".mid1").addClass("mid6").romoveClass("mid2")
-	//			$(".mid4").addClass("mid5").romoveClass("mid3")
-	//		}
-	//
-	//	})
 })
